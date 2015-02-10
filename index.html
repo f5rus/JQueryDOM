@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-1.6.2.min.js"></script>
+        <style>
+            nav ul{
+                list-style-type: none;                
+            }
+            
+            nav li{
+                display: inline-block;
+                width: 150px;
+                border: 2px solid coral;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Меню</h1>
+            <nav>
+                <ul>
+                    <li class="veg">Вегетарианское</li>
+                    <li class="ob">Обычное</li>
+                </ul>                
+            </nav>
+        </header>
+        <article class="menu">
+            <ul>
+                <li>
+                    <h2>Жаркое</h2>
+                    <ul>
+                        <li>Картофель</li>
+                        <li class="maso">Мясо</li>
+                        <li class="sir">Сыр</li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Окрошка</h2>
+                    <ul>
+                        <li>Картофель</li>
+                        <li class="maso">Колбаса</li>
+                        <li>Огурцы</li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Уха</h2>
+                    <ul>
+                        <li class="riba">Рыба</li>
+                        <li>Картофель</li>
+                        <li>Специи</li>
+                    </ul>                    
+                </li>    
+                 <li>
+                    <h2>Глазунья</h2>
+                    <ul>
+                        <li class="maso">Яйца</li>
+                        <li>Картофель</li>
+                        <li>Специи</li>
+                    </ul>                    
+                </li>   
+            </ul>                
+        </article>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".veg").click(function (){                  
+                     $r = $(".riba").parent().parent().detach();
+                     $(".sir").replaceWith("<li class='tofu'>Тофу</li>");
+                     $(".maso").before("<li class='gribi'>Грибы</li>");
+                     $m = $(".maso").detach();
+                });
+                
+                $(".ob").click(function(){
+                   $(".menu > ul > li").last().after($r); 
+                   $(".tofu").replaceWith("<li class='sir'>Сыр</li>");
+                   $(".gribi").each(function (i){
+                      $(this).before($m[i]);
+                      $(this).remove();
+                   });
+                });
+            });            
+        </script>
+            
+    </body>
+</html>
